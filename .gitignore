@@ -1,0 +1,32 @@
+## Конфигурационные файлы с секретами
+appsettings.json
+
+## Файлы IDE/редакторов
+.idea/
+.vscode/
+*.user
+*.suo
+*.vs/
+
+## Служебные папки сборки
+bin/
+obj/
+TestResults/ 
+packages/
+
+## Временные файлы
+*.log
+*.tmp
+*.cache
+
+## Файлы NuGet
+.nuget/
+*.nupkg
+
+## Резервные копии
+*.bak
+*.backup
+
+## Прочие артефакты
+.DS_Store
+Thumbs.db
