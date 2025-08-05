@@ -15,7 +15,8 @@ var configuration = new ConfigurationBuilder()
                    .AddJsonFile("appsettings.json")
                    .Build();
 
-var yandereService = new YandereService(httpClient);
+var tagNormalizationService = new TagNormalizationService();
+var yandereService = new YandereService(httpClient, tagNormalizationService);
 var botToken = configuration["BotToken"] ?? throw new Exception("BotToken not found in configuration");
 var bot = new TelegramBotClient(botToken, cancellationToken: cts.Token);
 var botService = new BotService(bot, yandereService);

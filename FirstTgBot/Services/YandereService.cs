@@ -6,14 +6,14 @@ using FirstTgBot.Models;
 
 namespace FirstTgBot.Services;
 
-public class YandereService(HttpClient httpClient)
+public class YandereService(HttpClient httpClient, TagNormalizationService tagService)
 {
     private const string BaseUrl = "https://yande.re/post.json";
 
     public async Task<YanderePost?> GetRandomImageAsync(string tags = "", string rating ="s")
     {
-        tags = tags.Replace(' ', '_');
-        var url = $"{BaseUrl}?tags={tags}&rating={rating}&limit=20";
+        var normalizedTags = tagService.NormalizeTags(tags);
+        var url = $"{BaseUrl}?tags={normalizedTags}&rating={rating}&limit=20";
         var response = await httpClient.GetStringAsync(url);
         var posts = JsonSerializer.Deserialize<YanderePost[]>(response);
 
